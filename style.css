@@ -11,6 +11,7 @@ body {
   flex-direction: column;
   align-items: center;
   max-height: 100vh;
+  background-color: #f5f5f5;
 }
 
 #container {
@@ -19,21 +20,29 @@ body {
   width: 80vmin; /* vmin to maintain aspect ratio */
   height: 80vmin;
   margin: auto;
+  border: 2px solid #ddd;
+  box-shadow: 0 4px 8px cyan;
 }
 
 .square {
   width: 6.25%; /* 100% / 16 columns */
   height: 6.25%;
-  border: 0.5px solid black;
+  border: 0.5px solid #c8c8c880;
+  background-color: white;
+  transition: background-color 0.3s ease; /* Trailing Effect */
 }
 #button {
   margin: 20px;
-  padding: 20px;
-  border: 5px;
-  border-radius: 20px;
-  border-color: blue;
-  font-size: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  background: cyan;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 #button:hover {
-  background-color: lightblue;
+  background-color: #00bcd4;
+  color: white;
 }
