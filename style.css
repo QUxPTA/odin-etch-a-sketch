@@ -31,18 +31,26 @@ body {
   background-color: white;
   transition: background-color 0.3s ease; /* Trailing Effect */
 }
-#button {
-  margin: 20px;
-  padding: 12px;
+
+/* Controls Styling */
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  margin: 10px;
+  padding: 10px;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   background: cyan;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-#button:hover {
+.button:hover {
   background-color: #00bcd4;
   color: white;
 }
