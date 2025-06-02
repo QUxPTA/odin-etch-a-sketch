@@ -61,3 +61,14 @@ function applyHoverEffect(square) {
     }
   });
 }
+
+// Clear Sketch Grid
+function clearGrid() {
+  const squares = document.querySelectorAll('.square'); // freshly select all squares
+  squares.forEach((square) => {
+    square.style.backgroundColor = 'white';
+  });
+}
+
+const clearButton = document.getElementById('clear-button');
+clearButton.addEventListener('click', clearGrid);
