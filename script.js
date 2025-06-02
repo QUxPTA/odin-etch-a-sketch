@@ -7,9 +7,15 @@ for (let i = 0; i < 256; i++) {
 }
 
 const squares = document.querySelectorAll('.square');
+const randomColorToggle = document.getElementById('randomColorToggle');
+
 squares.forEach((square) => {
   square.addEventListener('mouseover', () => {
-    square.style.backgroundColor = 'black';
+    if (randomColorToggle && randomColorToggle.checked) {
+      square.style.backgroundColor = getRandomColor();
+    } else {
+      square.style.backgroundColor = 'black';
+    }
   });
 });
 
@@ -35,8 +41,16 @@ button.addEventListener('click', () => {
       newSquares.forEach((newSquare) => {
         newSquare.style.width = `${squarePercentage}%`;
         newSquare.style.height = `${squarePercentage}%`;
+        // Generate random color on hover if toggle is checked
+        newSquare.style.backgroundColor = 'white'; // Reset background color
+        const randomColorToggle = document.getElementById('randomColorToggle');
+
         newSquare.addEventListener('mouseover', () => {
-          newSquare.style.backgroundColor = 'black';
+          if (randomColorToggle && randomColorToggle.checked) {
+            newSquare.style.backgroundColor = getRandomColor();
+          } else {
+            newSquare.style.backgroundColor = 'black';
+          }
         });
       });
     } else {
@@ -44,3 +58,11 @@ button.addEventListener('click', () => {
     }
   }
 });
+
+// Generating Random Colors
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
