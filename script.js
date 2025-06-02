@@ -1,3 +1,4 @@
+// Initial Grid
 const container = document.getElementById('container');
 
 for (let i = 0; i < 256; i++) {
@@ -7,18 +8,9 @@ for (let i = 0; i < 256; i++) {
 }
 
 const squares = document.querySelectorAll('.square');
-const randomColorToggle = document.getElementById('randomColorToggle');
+squares.forEach(applyHoverEffect);
 
-squares.forEach((square) => {
-  square.addEventListener('mouseover', () => {
-    if (randomColorToggle && randomColorToggle.checked) {
-      square.style.backgroundColor = getRandomColor();
-    } else {
-      square.style.backgroundColor = 'black';
-    }
-  });
-});
-
+// Grid Created after Prompt
 const button = document.getElementById('button');
 button.addEventListener('click', () => {
   let numberOfSquares = prompt(
@@ -41,17 +33,8 @@ button.addEventListener('click', () => {
       newSquares.forEach((newSquare) => {
         newSquare.style.width = `${squarePercentage}%`;
         newSquare.style.height = `${squarePercentage}%`;
-        // Generate random color on hover if toggle is checked
-        newSquare.style.backgroundColor = 'white'; // Reset background color
-        const randomColorToggle = document.getElementById('randomColorToggle');
-
-        newSquare.addEventListener('mouseover', () => {
-          if (randomColorToggle && randomColorToggle.checked) {
-            newSquare.style.backgroundColor = getRandomColor();
-          } else {
-            newSquare.style.backgroundColor = 'black';
-          }
-        });
+        newSquare.style.backgroundColor = 'white';
+        applyHoverEffect(newSquare);
       });
     } else {
       alert('Please enter a valid number between 1 and 100.');
@@ -65,4 +48,16 @@ function getRandomColor() {
   const g = Math.floor(Math.random() * 256);
   const b = Math.floor(Math.random() * 256);
   return `rgb(${r}, ${g}, ${b})`;
+}
+// Generating Square Colors Dynamically
+function applyHoverEffect(square) {
+  const randomColorToggle = document.getElementById('randomColorToggle');
+  square.addEventListener('mouseover', () => {
+    // Generate Random Color on hover if toggle is checked
+    if (randomColorToggle && randomColorToggle.checked) {
+      square.style.backgroundColor = getRandomColor();
+    } else {
+      square.style.backgroundColor = 'black';
+    }
+  });
 }
