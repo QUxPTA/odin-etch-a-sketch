@@ -52,12 +52,17 @@ function getRandomColor() {
 // Generating Square Colors Dynamically
 function applyHoverEffect(square) {
   const randomColorToggle = document.getElementById('randomColorToggle');
+  // Darken the square on each hover
+  let darkenValue = 0;
+
   square.addEventListener('mouseover', () => {
     // Generate Random Color on hover if toggle is checked
     if (randomColorToggle && randomColorToggle.checked) {
       square.style.backgroundColor = getRandomColor();
     } else {
-      square.style.backgroundColor = 'black';
+      if (darkenValue < 10) darkenValue += 1;
+      const opacity = darkenValue / 10;
+      square.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
     }
   });
 }
